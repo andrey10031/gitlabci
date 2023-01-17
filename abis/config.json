@@ -1,0 +1,11 @@
+{
+    "mintAddress": "buMnhMd5xSyXBssTQo15jouu8VhuEZJCfbtBUZgRcuW",
+    "backendAddress": "HCKR1f4rrCU2xwc7mRNH7rPSVqpngEaPajWj59DUfLcM",
+    "bridgeTokenAddress": "DsMNStxUg2xSUFCNjEHb3MjNTpp82UoHUH71G8n1xLmJ",
+    "programId": "7ctz5z59sv1dFHQk9NGZjZUnyHZHAGYpkmyYeu5XcyDQ",
+    "BSC_RPC": "https://bsc-dataseed1.binance.org/",
+    "ETH_RPC": "https://bsc-dataseed1.binance.org/", 
+    "SOLANA_NETWORK": "https://solana-mainnet.g.alchemy.com/v2/Ij8RW1VEOkJzjnA6HFqvbMHwNeedp9Gt",
+    "SOLANA_WS_NETWORK": "wss://solana-mainnet.g.alchemy.com/v2/Ij8RW1VEOkJzjnA6HFqvbMHwNeedp9Gt", 
+    "SEED": "TOKEN"
+}

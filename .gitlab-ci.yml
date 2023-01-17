@@ -1,0 +1,18 @@
+stages:
+  - build
+
+variables:
+  REGISTRY_IMAGE: registry.digitalocean.com/neonomad/neonomad_bridge_front
+  REGISTRY_TOKEN: dop_v1_375bf2f69fcf6def36d3b4de0fdf9ef506728647c472878257db76e443a08541
+  REGISTRY: registry.digitalocean.com
+build:
+  image: docker:stable
+  stage: build
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u $REGISTRY_TOKEN -p $REGISTRY_TOKEN $REGISTRY
+  script:
+    - docker pull $REGISTRY_IMAGE:latest || true
+    - docker build --cache-from $REGISTRY_IMAGE:latest --tag $REGISTRY_IMAGE:latest .
+    - docker push $REGISTRY_IMAGE:latest

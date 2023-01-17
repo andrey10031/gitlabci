@@ -1,0 +1,411 @@
+{
+  "version": "0.1.0",
+  "name": "neonomad_bridge",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "settingsAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "token",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "feeAddress",
+          "type": "publicKey"
+        },
+        {
+          "name": "backendSigners",
+          "type": {
+            "array": [
+              "publicKey",
+              10
+            ]
+          }
+        },
+        {
+          "name": "size",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "addSigner",
+      "accounts": [
+        {
+          "name": "caller",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "settingsAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "newSigner",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "removeSigner",
+      "accounts": [
+        {
+          "name": "caller",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "settingsAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "signerToRemove",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "dispense",
+      "accounts": [
+        {
+          "name": "signer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "pdaDepositTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "receiver",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "feeReceiver",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "settingsAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pda",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "userAmount",
+          "type": "u64"
+        },
+        {
+          "name": "feeAmount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "collect",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "pdaTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "settingsAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "lockAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "target",
+          "type": {
+            "array": [
+              "u8",
+              20
+            ]
+          }
+        },
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "ethereum",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "clearLock",
+      "accounts": [
+        {
+          "name": "signer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "lockAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "settingsAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "updateLock",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "pdaTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "settingsAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "lockAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "target",
+          "type": {
+            "array": [
+              "u8",
+              20
+            ]
+          }
+        },
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "ethereum",
+          "type": "bool"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "LockInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "target",
+            "type": {
+              "array": [
+                "u8",
+                20
+              ]
+            }
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "user",
+            "type": "publicKey"
+          },
+          {
+            "name": "ethereum",
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Settings",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "feeAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "backendSigners",
+            "type": {
+              "array": [
+                "publicKey",
+                10
+              ]
+            }
+          },
+          {
+            "name": "initialized",
+            "type": "bool"
+          },
+          {
+            "name": "size",
+            "type": "u32"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "Backend",
+      "msg": "Invalid backend address"
+    },
+    {
+      "code": 6001,
+      "name": "Lock",
+      "msg": "Invalid lock owner"
+    },
+    {
+      "code": 6002,
+      "name": "Fee",
+      "msg": "Invalid fee address"
+    },
+    {
+      "code": 6003,
+      "name": "Signer",
+      "msg": "Invalid signer"
+    },
+    {
+      "code": 6004,
+      "name": "NotInitialize",
+      "msg": "Not initialized"
+    },
+    {
+      "code": 6005,
+      "name": "Settings",
+      "msg": "Invalid settings account"
+    },
+    {
+      "code": 6006,
+      "name": "AddNewSigner",
+      "msg": "Cannot add new signer. Signers array is full"
+    },
+    {
+      "code": 6007,
+      "name": "SignerNotFound",
+      "msg": "Signer not found in signers array"
+    },
+    {
+      "code": 6008,
+      "name": "SignerArrayIsEmpty",
+      "msg": "Signer array is empty"
+    },
+    {
+      "code": 6009,
+      "name": "InvalidSignerManager",
+      "msg": "Signer is invalid"
+    },
+    {
+      "code": 6010,
+      "name": "InvalidInitCaller",
+      "msg": "Init caller is invalid"
+    }
+  ]
+}

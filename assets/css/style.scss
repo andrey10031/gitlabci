@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/Poppins-Regular.ttf") format("woff2"),
+  url("/Poppins-Regular.ttf") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/Poppins-SemiBold.ttf") format("woff2"),
+    url("/Poppins-SemiBold.ttf") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/Poppins-Medium.ttf") format("woff2"),
+    url("/Poppins-Medium.ttf") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: auto;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html,
+body,
+#__nuxt,
+.App {
+  min-height: 100vh;
+  // min-width: 100%;
+  // width: 100%;
+}
+
+body {
+  background: url(~/assets/background.png) 0 0 no-repeat fixed;
+  @media screen and(max-width:717px) {
+    background-image: url(~/assets/background-mobile.png) !important;
+    background-size: cover !important;
+    background-position: top !important;
+  }
+  // background: url(~/assets/bridge.png) 0 0 no-repeat fixed;
+  background-size: 100% 100%;
+  background-color: #333;
+  font-family: "Gilroy";
+  font-style: normal;
+  line-height: 130%;
+  color: #fff;
+  position: relative;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700px;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+input,
+button,
+button:active,
+button:focus {
+  outline: none !important;
+  border: none;
+}

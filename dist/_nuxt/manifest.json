@@ -1,0 +1,27 @@
+{
+  "node_modules/nuxt/dist/app/entry.mjs": {
+    "file": "entry-bd83f89b.mjs",
+    "src": "node_modules/nuxt/dist/app/entry.mjs",
+    "isEntry": true,
+    "css": [
+      "entry.75d7384f.css"
+    ],
+    "assets": [
+      "solana.f15c113b.svg",
+      "binance.a9f24156.svg",
+      "eth.9dcb678e.svg",
+      "breakpoint.63521583.svg",
+      "info.a290195e.svg",
+      "error.d2635d3f.svg",
+      "success.38c21984.svg",
+      "copy.51e10fe0.svg",
+      "bsc.79ce1ac8.svg",
+      "sol.ec6cf8be.svg",
+      "Metamask.422abecc.svg",
+      "WC.6c4c6294.svg",
+      "Phantom.2774971a.svg",
+      "close.cb57b0bb.svg",
+      "background.03940c18.png"
+    ]
+  }
+}
